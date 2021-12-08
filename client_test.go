@@ -3,6 +3,7 @@ package client
 import (
 	"io"
 	"log"
+	"os"
 	"testing"
 	"time"
 
@@ -14,7 +15,7 @@ func TestBasicAuthClient(t *testing.T) {
 		BasicAuth: &BasicAuthOption{
 			Username: "weekndCN",
 			// github using personal token
-			Password: "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",
+			Password: os.Getenv("GITHUB_PERSONAL_TOKEN"),
 		},
 		HTTPTransport: &TransportOption{
 			DialContextTimeout: 30 * time.Second,
